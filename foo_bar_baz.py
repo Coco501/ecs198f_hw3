@@ -12,3 +12,12 @@ def foo_bar_baz(n: int) -> str:
         if i < n:
             return_str += " "
     return return_str
+
+# debugging
+def main():
+    integer_input = int(input(("Please input an integer: ")))
+    string = foo_bar_baz(integer_input)
+    print(string)
+
+if __name__ == '__main__':
+    main()
