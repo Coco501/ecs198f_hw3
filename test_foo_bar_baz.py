@@ -19,6 +19,9 @@ def correct_foo_bar_baz(n: int) -> str:
 for i in range(-100, 1000):
 	assert correct_foo_bar_baz(i) == foo_bar_baz(i)
 
+for i in range (1, 1000):
+	assert not foo_bar_baz(i).endswith(" "), f"foo_bar_baz({i}) ended with ' '."
+
 
 """
 expected_outputs = [ # 1 - 15
