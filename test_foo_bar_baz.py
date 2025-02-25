@@ -1,6 +1,26 @@
 import pytest
 from foo_bar_baz import foo_bar_baz
 
+def correct_foo_bar_baz(n: int) -> str:
+    return_str = ""
+    for i in range(1, n + 1, 1):
+        if (i % 3 == 0) and (i % 5 == 0):
+            return_str += "Baz"
+        elif i % 3 == 0:
+            return_str += "Foo"
+        elif i % 5 == 0:
+            return_str += "Bar"
+        else:
+            return_str += str(i)
+        if i < n:
+            return_str += " "
+    return return_str
+
+for i in range(-100, 1000):
+	assert correct_foo_bar_baz(i) == foo_bar_baz(i)
+
+
+"""
 expected_outputs = [ # 1 - 15
     "",
     "1",  
@@ -42,6 +62,7 @@ def test_regular_numbers():
 
     for i in range(0, len(expected_outputs)):
         assert foo_bar_baz(i) == expected_outputs[i], f"foo_bar_baz({i}) failed"
+"""
 
 def test_negative_numbers():
     assert foo_bar_baz(-1253) == ""
