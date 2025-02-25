@@ -20,6 +20,22 @@ expected_outputs = [ # 1 - 15
     "1 2 Foo 4 Bar Foo 7 8 Foo Bar 11 Foo 13 14 Baz",  
 ]
 
+A = list(range(500))
+
+for i in range(1, len(A)):
+	if i % 5 == 0 and i % 3 == 0:
+		A[i] = "Baz"
+	elif i % 3 == 0:
+		A[i] = "Foo"
+	elif i % 5 == 0:
+		A[i] = "Bar"
+	else:
+		A[i] = str(i)
+
+def test_list_500():
+	for i in range(1, len(A)):
+		assert foo_bar_baz(i).split()[-1] == A[i], f"foo_bar_baz({i}) failed"
+
 #Add testcases Here
 def test_regular_numbers():
     # positive tests
@@ -41,6 +57,8 @@ def test_wrong_types():
         foo_bar_baz()
 
 def test_large_numbers_return():
-    assert isinstance(foo_bar_baz(608106), str)
-    assert isinstance(foo_bar_baz(360916), str)
-    assert isinstance(foo_bar_baz(461980), str)
+    assert foo_bar_baz(608106).split()[-1] == "Foo"
+    assert foo_bar_baz(360916).split()[-1] == "360916"
+    assert foo_bar_baz(461980).split()[-1] == "Bar"
+    assert foo_bar_baz(461985).split()[-1] == "Baz"
+	
